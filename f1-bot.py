@@ -16,7 +16,7 @@ def setTag(keyword, content, sidebar):
     
 def getCountdownTime():
     dir = path.dirname(__file__)
-    sessions_data = open(path.join(dir, "sessions.json"), "r")
+    sessions_data = open(path.join(dir, "schedule.json"), "r")
     sessions = json.load(sessions_data)
     sessions_data.close()
     lengths = {
