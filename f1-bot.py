@@ -43,7 +43,14 @@ r = praw.Reddit(config['reddit']['user_agent'])
 r.login(config['reddit']['username'], config['reddit']['password'])
 
 # Connect to MySQL database
-cnx = mysql.connector.connect(user=config['mysql']['username'].encode(), password=config['mysql']['password'].encode(), host=config['mysql']['host'].encode(), database=config['mysql']['database'].encode(), buffered=True, collation='utf8_swedish_ci', charset='utf8')
+cnx = mysql.connector.connect(
+    user=config['mysql']['username'].encode(),
+    password=config['mysql']['password'].encode(),
+    host=config['mysql']['host'].encode(),
+    database=config['mysql']['database'].encode(),
+    buffered=True,
+    collation='utf8_swedish_ci',
+    charset='utf8')
 
 # Search for rows where the difference between schedule and now is less than 3 hours
 cursor = cnx.cursor()
