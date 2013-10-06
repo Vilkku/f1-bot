@@ -77,6 +77,7 @@ if (cursor.rowcount > 0):
         s.distinguish()
         s.sticky()
         updateCursor.execute(update_query, { 'post_id': id })
+        cnx.commit()
 
 cursor.close()
 updateCursor.close()
