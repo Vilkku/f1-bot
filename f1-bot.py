@@ -35,7 +35,7 @@ def getCountdownTime():
             # If the event time hasn't passed
             if timeleft > datetime.timedelta():
                 d = datetime.datetime(1,1,1) + timeleft
-                return ("**%s**: %dD %dH %dM" % (session, d.day-1, d.hour, d.minute))
+                return ("**%s**: %dM %dW %dD %dH %dM" % (session, d.month, d.week, d.day-1, d.hour, d.minute))
                 
             # If the event time has passed but the event isn't over
             if (timeleft + sessionlength) > datetime.timedelta():
