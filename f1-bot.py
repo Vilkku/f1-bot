@@ -8,12 +8,12 @@ from os import path
 # Functions
 def setTag(keyword, content, sidebar):
     p = re.compile('\[\]\(\/f1bot-'+keyword+'-s\)(.*)\[\]\(\/f1bot-'+keyword+'-e\)', re.IGNORECASE)
-       
+
     if p.search(sidebar):
         for match in p.finditer(sidebar):
             sidebar = sidebar.replace(match.group(0), '[](/f1bot-'+keyword+'-s)'+content+' [](/f1bot-'+keyword+'-e)')
     return sidebar
-    
+
 def getCountdownTime():
     dir = path.dirname(__file__)
     sessions_data = open(path.join(dir, "schedule.json"), "r")
@@ -31,17 +31,17 @@ def getCountdownTime():
             sessiontime = datetime.datetime.strptime(time, '%Y-%m-%d %H:%M')
             sessionlength = datetime.timedelta(0, lengths[session]*60)
             timeleft = sessiontime - datetime.datetime.now()
-            
+
             # If the event time hasn't passed
             if timeleft > datetime.timedelta():
                 d = datetime.datetime(1,1,1) + timeleft
-                #return ("**%s**: %dM %dD %dH %dM" % (session, d.month-1, d.day-1, d.hour, d.minute))
-                return ("**%s**: %dM %dD" % (session, d.month-1, d.day-1))
-                
+                return ("**%s**: %dM %dD %dH %dM" % (session, d.month-1, d.day-1, d.hour, d.minute))
+                #return ("**%s**: %dM %dD" % (session, d.month-1, d.day-1))
+
             # If the event time has passed but the event isn't over
             if (timeleft + sessionlength) > datetime.timedelta():
                 return "Live!"
-                
+
     return ""
 
 # Read configuration file
@@ -86,7 +86,7 @@ updateCursor.close()
 # Update the sidebar
 current_sidebar = r.get_subreddit("formula1").get_settings()["description"]
 new_sidebar = current_sidebar
-    
+
 new_sidebar = setTag("countdown", getCountdownTime(), new_sidebar)
 r.get_subreddit("formula1").update_settings(description=new_sidebar)
 
