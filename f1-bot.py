@@ -3,6 +3,7 @@ import mysql.connector
 import re
 import datetime
 import json
+import HTMLParser
 from os import path
 
 # Functions
@@ -84,7 +85,9 @@ cursor.close()
 updateCursor.close()
 
 # Update the sidebar
+h = HTMLParser.HTMLParser()
 current_sidebar = r.get_subreddit("formula1").get_settings()["description"]
+current_sidebar = h.unescape(current_sidebar)
 new_sidebar = current_sidebar
 
 new_sidebar = setTag("countdown", getCountdownTime(), new_sidebar)
