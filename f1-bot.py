@@ -73,9 +73,9 @@ update_query = ("UPDATE f1_bot SET posted=1 WHERE id=%(post_id)s")
 cursor.execute(fetch_query)
 
 if (cursor.rowcount > 0):
-    for (id, subreddit, title, text) in cursor:
+    for (id, subreddit, title, text, flair_text, flair_css) in cursor:
         s = r.submit(subreddit, title, text=text)
-        s.set_flair(flair_css_class='star')
+        s.set_flair(flair_text=flair_text,flair_css_class=flair_css)
         s.distinguish()
         s.sticky()
         updateCursor.execute(update_query, { 'post_id': id })
