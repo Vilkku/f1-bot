@@ -68,7 +68,7 @@ cnx = mysql.connector.connect(
 # Search for rows where the difference between schedule and now is less than 3 hours
 cursor = cnx.cursor()
 updateCursor = cnx.cursor()
-fetch_query = ("SELECT id, subreddit, title, text FROM f1_bot WHERE (TIME_TO_SEC(TIMEDIFF(schedule, NOW())) < 300) AND (posted = 0)")
+fetch_query = ("SELECT id, subreddit, title, text, flair_text, flair_css FROM f1_bot WHERE (TIME_TO_SEC(TIMEDIFF(schedule, NOW())) < 300) AND (posted = 0)")
 update_query = ("UPDATE f1_bot SET posted=1 WHERE id=%(post_id)s")
 cursor.execute(fetch_query)
 
