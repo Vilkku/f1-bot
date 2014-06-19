@@ -78,7 +78,7 @@ if (cursor.rowcount > 0):
         s.set_flair(flair_text=flair_text,flair_css_class=flair_css)
         s.distinguish()
         s.sticky()
-        s.add_comment('Please post streams under this comment.')
+        s.add_comment('Please post streams and stream requests as a reply to this comment.')
         updateCursor.execute(update_query, { 'post_id': post_id })
         cnx.commit()
 
