@@ -73,12 +73,13 @@ update_query = ("UPDATE f1_bot SET posted=1 WHERE id=%(post_id)s")
 cursor.execute(fetch_query)
 
 if (cursor.rowcount > 0):
-    for (id, subreddit, title, text, flair_text, flair_css) in cursor:
+    for (post_id, subreddit, title, text, flair_text, flair_css) in cursor:
         s = r.submit(subreddit, title, text=text)
         s.set_flair(flair_text=flair_text,flair_css_class=flair_css)
         s.distinguish()
         s.sticky()
-        updateCursor.execute(update_query, { 'post_id': id })
+        s.add_comment('Please post streams under this comment.')
+        updateCursor.execute(update_query, { 'post_id': post_id })
         cnx.commit()
 
 cursor.close()
