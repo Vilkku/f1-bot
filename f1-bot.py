@@ -77,7 +77,7 @@ if (cursor.rowcount > 0):
         s = r.submit(subreddit, title, text=text)
         updateCursor.execute(update_query, { 'post_id': post_id })
         cnx.commit()
-        if (subreddit == 'formula1' || subreddit == 'vilkku'):
+        if (subreddit == 'formula1' or subreddit == 'vilkku'):
             s.set_flair(flair_text=flair_text,flair_css_class=flair_css)
             s.distinguish()
             s.sticky()
