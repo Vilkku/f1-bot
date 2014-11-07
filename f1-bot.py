@@ -2,6 +2,7 @@ import praw
 import mysql.connector
 import re
 import datetime
+from collections import OrderedDict
 import json
 import HTMLParser
 from os import path
@@ -18,7 +19,7 @@ def setTag(keyword, content, sidebar):
 def getCountdownTime():
     dir = path.dirname(__file__)
     sessions_data = open(path.join(dir, "schedule.json"), "r")
-    sessions = json.load(sessions_data)
+    sessions = json.load(sessions_data, object_pairs_hook=OrderedDict)
     sessions_data.close()
     lengths = {
         'Practice 1': 90,
