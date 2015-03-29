@@ -28,7 +28,7 @@ def getCountdownTime():
         'Qualifying': 90,
         'Race': 120
     }
-    for event in sessions['2014']:
+    for event in sessions['2015']:
         for (session, time) in event['times'].items():
             sessiontime = datetime.datetime.strptime(time, '%Y-%m-%d %H:%M')
             sessionlength = datetime.timedelta(0, lengths[session]*60)
