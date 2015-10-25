@@ -93,7 +93,7 @@ def getCountdownTime(sessions):
 
             # If the event time has passed but the event isn't over
             if (timeleft + sessionlength) > datetime.timedelta():
-                return "Live!"
+                return ("**%s**: Live!" % (session))
 
     return ""
 
