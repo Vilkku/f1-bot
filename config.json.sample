@@ -1,8 +1,7 @@
 {
     "reddit": {
-        "username": "username",
-        "password": "password",
-        "user_agent": "Descriptive user agent string"
+        "user_agent": "linux:org.vilkku.redditf1:v1.0.0 (by /u/Vilkku)",
+        "subreddit": "formula1"
     },
     "mysql": {
         "username": "username",
