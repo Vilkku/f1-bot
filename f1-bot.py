@@ -26,7 +26,7 @@ def main():
     o = OAuth2Util.OAuth2Util(r)
     o.refresh(force=True)
 
-    if (mysql in config):
+    if ("mysql" in config):
         # Connect to MySQL database
         cnx = mysql.connector.connect(
             user=config['mysql']['username'].encode(),
