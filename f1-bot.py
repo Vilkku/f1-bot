@@ -82,11 +82,11 @@ def getCountdownTime(sessions):
             # If the event time hasn't passed
             if timeleft > datetime.timedelta():
                 d = datetime.datetime(1,1,1) + timeleft
-                if (d.hour < 1):
+                if (timeleft < datetime.timedelta(hours=1)):
                     return ("**%s**: %dM" % (session, d.minute))
-                elif (d.hour < 24):
+                elif (timeleft < datetime.timedelta(hours=7)):
                     return ("**%s**: %dH %dM" % (session, d.hour, d.minute))
-                elif (d.day < 7):
+                elif (timeleft < datetime.timedelta(days=7)):
                     return ("**%s**: %dD %dH" % (session, d.day-1, d.hour))
                 else:
                     return ("**%s**: %dD" % (session, d.day-1))
